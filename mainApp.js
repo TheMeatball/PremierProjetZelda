@@ -97,6 +97,33 @@ btnResearch.addEventListener('click', (e) =>{
     
 });
 
+function createList(dataCat){
+    console.log(database);
+    console.log(dataCat);
+    let dataCatNames = [];
+    for(let dataCatName of dataCat){
+        dataCatNames.push(dataCatName.name);
+    }
+    dataCatNames.sort();
+    for(let j = 0 ; j < dataCatNames.length ; j++){
+        for(let i = 0 ; i < dataCat.length ; i++){
+
+            if(dataCat[i].name == dataCatNames[j]){
+                let li = document.createElement('li');
+                li.classList.add('creaturesNonFood');
+                li.innerHTML = `${dataCat[i].name}`;
+                
+                let img = document.createElement('img');
+                img.setAttribute('src', dataCat[i].image);
+                containerList.appendChild(li);
+                li.appendChild(img);
+
+            }
+        };
+    };
+    console.log('tri et affichage terminé');
+}
+
 btnCreatures.addEventListener('click', (e) =>{
     containerList.innerHTML = '';
     formResearch.classList.add('formResearch--hidden');
@@ -106,32 +133,7 @@ btnCreatures.addEventListener('click', (e) =>{
         return response.json();
     })
     .then((database) =>{
-        console.log(database);
-        let creaturesNonFood = database.data.creatures.non_food;
-        console.log(creaturesNonFood);
-        let creaturesNonFoodNames = [];
-        for(let creaturesName of creaturesNonFood){
-            creaturesNonFoodNames.push(creaturesName.name);
-        }
-        creaturesNonFoodNames.sort();
-        for(let j = 0 ; j < creaturesNonFoodNames.length ; j++){
-            for(let i = 0 ; i < creaturesNonFood.length ; i++){
-
-                if(creaturesNonFood[i].name == creaturesNonFoodNames[j]){
-                    let li = document.createElement('li');
-                    li.classList.add('creaturesNonFood');
-                    li.innerHTML = `${creaturesNonFood[i].name}`;
-                    
-                    let img = document.createElement('img');
-                    img.setAttribute('src', creaturesNonFood[i].image);
-                    containerList.appendChild(li);
-                    li.appendChild(img);
-
-                }
-            };
-        };
-        console.log('tri et affichage terminé');
-        
+        createList(database.data.creatures.non_food);
     })
     .catch((response) =>{
         console.log('data non trouvée');
@@ -148,32 +150,7 @@ btnCreaturesFood.addEventListener('click', (e) =>{
         return response.json();
     })
     .then((database) =>{
-        console.log(database);
-        let creaturesFood = database.data.creatures.food;
-        console.log(creaturesFood);
-        let creaturesFoodNames = [];
-        for(let creaturesName of creaturesFood){
-            creaturesFoodNames.push(creaturesName.name);
-        }
-        creaturesFoodNames.sort();
-        for(let j = 0 ; j < creaturesFoodNames.length ; j++){
-            for(let i = 0 ; i < creaturesFood.length ; i++){
-
-                if(creaturesFood[i].name == creaturesFoodNames[j]){
-                    let li = document.createElement('li');
-                    li.classList.add('creaturesNonFood');
-                    li.innerHTML = `${creaturesFood[i].name}`;
-                    
-                    let img = document.createElement('img');
-                    img.setAttribute('src', creaturesFood[i].image);
-                    containerList.appendChild(li);
-                    li.appendChild(img);
-
-                }
-            };
-        };
-        console.log('tri et affichage terminé');
-        
+        createList(database.data.creatures.food);
     })
     .catch((response) =>{
         console.log('data non trouvée');
@@ -190,32 +167,7 @@ btnMaterials.addEventListener('click', (e) =>{
         return response.json();
     })
     .then((database) =>{
-        console.log(database);
-        let materials = database.data.materials;
-        console.log(materials);
-        let materialsNames = [];
-        for(let materialsNameEl of materials){
-            materialsNames.push(materialsNameEl.name);
-        }
-        materialsNames.sort();
-        for(let j = 0 ; j < materialsNames.length ; j++){
-            for(let i = 0 ; i < materials.length ; i++){
-
-                if(materials[i].name == materialsNames[j]){
-                    let li = document.createElement('li');
-                    li.classList.add('creaturesNonFood');
-                    li.innerHTML = `${materials[i].name}`;
-                    
-                    let img = document.createElement('img');
-                    img.setAttribute('src', materials[i].image);
-                    containerList.appendChild(li);
-                    li.appendChild(img);
-
-                }
-            };
-        };
-        console.log('tri et affichage terminé');
-        
+        createList(database.data.materials);
     })
     .catch((response) =>{
         console.log('data non trouvée');
@@ -232,35 +184,7 @@ btnMonsters.addEventListener('click', (e) =>{
         return response.json();
     })
     .then((database) =>{
-        console.log(database);
-        let monsters = database.data.monsters;
-        console.log(monsters);
-        let monstersNames = [];
-        for(let monstersNameEl of monsters){
-            monstersNames.push(monstersNameEl.name);
-        }
-        monstersNames.sort();
-        for(let j = 0 ; j < monstersNames.length ; j++){
-            for(let i = 0 ; i < monsters.length ; i++){
-
-                if(monsters[i].name == "molduking" ||
-                   monsters[i].name == "monk maz koshia" ||
-                   monsters[i].name == "igneo talus titan"){
-                    // images inexistantes
-                }else if(monsters[i].name == monstersNames[j]){
-                    let li = document.createElement('li');
-                    li.classList.add('creaturesNonFood');
-                    li.innerHTML = `${monsters[i].name}`;
-                    
-                    let img = document.createElement('img');
-                    img.setAttribute('src', monsters[i].image);
-                    containerList.appendChild(li);
-                    li.appendChild(img);
-                }
-            };
-        };
-        console.log('tri et affichage terminé');
-        
+        createList(database.data.monsters);
     })
     .catch((response) =>{
         console.log('data non trouvée');
@@ -277,42 +201,7 @@ btnEquipments.addEventListener('click', (e) =>{
         return response.json();
     })
     .then((database) =>{
-        console.log(database);
-        let equipments = database.data.equipment;
-        console.log(equipments);
-        let equipmentsNames = [];
-        for(let equipmentsNamesEl of equipments){
-            equipmentsNames.push(equipmentsNamesEl.name);
-        }
-        equipmentsNames.sort();
-        for(let j = 0 ; j < equipmentsNames.length ; j++){
-            for(let i = 0 ; i < equipments.length ; i++){
-
-                if(equipments[i].name == 'ancient battle axe+'  ||
-                   equipments[i].name == 'ancient battle axe++' ||
-                   equipments[i].name == 'golden bow'           ||
-                   equipments[i].name == 'golden claymore'      ||
-                   equipments[i].name == 'guardian shield+'     ||
-                   equipments[i].name == 'guardian shield++'    ||
-                   equipments[i].name == 'guardian spear+'      ||
-                   equipments[i].name == 'guardian spear++'     ||
-                   equipments[i].name == 'guardian sword+'      ||
-                   equipments[i].name == 'guardian sword++'     ||
-                   equipments[i].name == 'one-hit obliterator'){
-                    // image inexistante
-                }else if(equipments[i].name == equipmentsNames[j]){
-                    let li = document.createElement('li');
-                    li.classList.add('creaturesNonFood');
-                    li.innerHTML = `${equipments[i].name}`;
-                    
-                    let img = document.createElement('img');
-                    img.setAttribute('src', equipments[i].image);
-                    containerList.appendChild(li);
-                    li.appendChild(img);
-                }
-            };
-        };
-        console.log('tri et affichage terminé');
+        createList(database.data.equipment);
     })
     .catch((response) =>{
         console.log('data non trouvée');
