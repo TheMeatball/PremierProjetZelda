@@ -133,7 +133,8 @@ btnCreatures.addEventListener('click', (e) =>{
         return response.json();
     })
     .then((database) =>{
-        createList(database.data.creatures.non_food);
+        let elNonFood = database.data.creatures.non_food;
+        createList(elNonFood);
     })
     .catch((response) =>{
         console.log('data non trouvée');
