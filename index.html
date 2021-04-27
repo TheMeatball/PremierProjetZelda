@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="mainApp.js" defer></script>
+</head>
+<body>
+    <div class="btnsContainer">
+        <ul class="btnsList">
+            <li>
+                <button class="btn btnCreatures">Créatures</button>
+            </li>
+            <li>
+                <button class="btn btnCreaturesFood">Créatures cuisinables</button>
+            </li>
+            <li>
+                <button class="btn btnMaterials">Ingrédiants</button>
+            </li>
+            <li>
+                <button class="btn btnMonsters">Monstres</button>
+            </li>
+            <li>
+                <button class="btn btnEquipments">Équipements</button>
+            </li>
+            <li>
+                <button class="btn btnResearch">Recherche</button>
+            </li>
+        </ul>
+    </div>
+
+    <form class="formResearch formResearch--hidden">
+        <label for="filter-term">Que recherches-tu ?</label>
+        <input type="text" id="filter-term" name="filter-term">
+
+        <button class="btnSubmit">Go !</button>
+    </form>
+
+    <div class="container">
+        <ul class="containerList">
+
+        </ul>
+    </div>
+    <div class="infosContainer">
+        <ul class="infosList">
+
+        </ul>
+    </div>
+
+</body>
+</html>
