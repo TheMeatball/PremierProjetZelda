@@ -12,6 +12,9 @@ let formResearch = document.querySelector('.formResearch');
 let formResearchInput = document.querySelector('.formResearchInput');
 let btnSubmit = document.querySelector('.btnSubmit');
 
+let infosContainer = document.querySelector('.infosContainer');
+let greyCover = document.querySelector('.greyCover');
+
 let btnsContainer = document.querySelector('.btnsContainer');
 let y = 0;
 
@@ -25,6 +28,19 @@ document.addEventListener('scroll', (e) =>{
     y = y2;
 });
 
+document.querySelector('.closeInfos').addEventListener('click', (e) =>{
+    greyCover.classList.add('greyCover--hidden');
+    infosContainer.classList.add('infosContainer--hidden');
+});
+
+function clickOnElement(elClicked){
+    elClicked.addEventListener('click', (e) =>{
+        console.log('element clicked');
+        infosContainer.classList.remove('infosContainer--hidden');
+        greyCover.classList.remove('greyCover--hidden');
+    });
+}
+
 function liElement(input){
     let li = document.createElement('li');
     li.classList.add('creaturesNonFood');
@@ -34,6 +50,8 @@ function liElement(input){
     img.setAttribute('src', input.image);
     containerList.appendChild(li);
     li.appendChild(img);
+
+    clickOnElement(li);
 }
 
 function recherche(dataCat){
@@ -135,10 +153,10 @@ function createList(dataCat, btnClicked, cat){
                     // images inexistantes
                 }else if(dataCat[i].name == dataCatNames[j]){
                     liElement(dataCat[i]);
-                    
                 }
             };
         };
+
         console.log('tri et affichage terminé');
     });
 }

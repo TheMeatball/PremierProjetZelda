@@ -93,3 +93,6 @@ body{
 .infosContainer--hidden, .greyCover--hidden{
     display: none;
 }
+.closeInfos{
+    cursor: pointer;
+}
