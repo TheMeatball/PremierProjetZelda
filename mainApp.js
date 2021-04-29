@@ -32,12 +32,17 @@ document.querySelector('.closeInfos').addEventListener('click', (e) =>{
     greyCover.classList.add('greyCover--hidden');
     infosContainer.classList.add('infosContainer--hidden');
 });
+greyCover.addEventListener('click', (e) =>{
+    greyCover.classList.add('greyCover--hidden');
+    infosContainer.classList.add('infosContainer--hidden');
+});
 
 function clickOnElement(elClicked){
     elClicked.addEventListener('click', (e) =>{
         console.log('element clicked');
         infosContainer.classList.remove('infosContainer--hidden');
         greyCover.classList.remove('greyCover--hidden');
+        infosContainer.animate(infosKeyframes, infosOptions);
     });
 }
 
@@ -197,3 +202,18 @@ fetch('https://botw-compendium.herokuapp.com/api/v2')
 .catch((response) =>{
 console.log('data non trouvée => ' + response);
 });
+
+
+// animations
+// ============
+
+const infosKeyframes = {
+    opacity: ['0%', '100%'],
+    right: ['-400px', '0px']
+};
+const infosOptions = {
+    duration: 300,
+    iterations: 1,
+    fill: 'forwards',
+    easing: 'ease'
+};
