@@ -37,15 +37,6 @@ greyCover.addEventListener('click', (e) =>{
     infosContainer.classList.add('infosContainer--hidden');
 });
 
-function clickOnElement(elClicked){
-    elClicked.addEventListener('click', (e) =>{
-        console.log('element clicked');
-        infosContainer.classList.remove('infosContainer--hidden');
-        greyCover.classList.remove('greyCover--hidden');
-        infosContainer.animate(infosKeyframes, infosOptions);
-    });
-}
-
 function liElement(input){
     let li = document.createElement('li');
     li.classList.add('creaturesNonFood');
@@ -56,8 +47,32 @@ function liElement(input){
     containerList.appendChild(li);
     li.appendChild(img);
 
-    clickOnElement(li);
+    clickOnElement(li, input);
 }
+
+// création des infos lors du click sur un élément
+function clickOnElement(elClicked, catEl){
+    elClicked.addEventListener('click', (e) =>{
+        console.log('element clicked');
+        infosContainer.classList.remove('infosContainer--hidden');
+        greyCover.classList.remove('greyCover--hidden');
+        infosContainer.animate(infosKeyframes, infosOptions);
+
+        console.log(catEl);
+        let name = document.createElement('li');
+        name.innerHTML = `${catEl.name}`;
+        infosContainer.appendChild(name);
+        
+        let img = document.createElement('img');
+        img.setAttribute('src', catEl.image);
+        infosContainer.appendChild(img);
+
+        let description = document.createElement('li');
+        description.innerHTML = `Description : ${catEl.description}`;
+        infosContainer.appendChild(description);
+    });
+}
+
 
 function recherche(dataCat){
     let arrayNames = [];
