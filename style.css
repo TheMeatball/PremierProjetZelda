@@ -87,7 +87,7 @@ body{
     left: 0;
 }
 .infosList{
-
+    list-style-type: none;
 }
 
 .infosContainer--hidden, .greyCover--hidden{

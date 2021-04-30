@@ -14,6 +14,7 @@ let btnSubmit = document.querySelector('.btnSubmit');
 
 let infosContainer = document.querySelector('.infosContainer');
 let greyCover = document.querySelector('.greyCover');
+let infosList = document.querySelector('.infosList');
 
 let btnsContainer = document.querySelector('.btnsContainer');
 let y = 0;
@@ -31,10 +32,12 @@ document.addEventListener('scroll', (e) =>{
 document.querySelector('.closeInfos').addEventListener('click', (e) =>{
     greyCover.classList.add('greyCover--hidden');
     infosContainer.classList.add('infosContainer--hidden');
+    infosContainer.innerHTML = '';
 });
 greyCover.addEventListener('click', (e) =>{
     greyCover.classList.add('greyCover--hidden');
     infosContainer.classList.add('infosContainer--hidden');
+    infosContainer.innerHTML = '';
 });
 
 function liElement(input){
@@ -61,15 +64,15 @@ function clickOnElement(elClicked, catEl){
         console.log(catEl);
         let name = document.createElement('li');
         name.innerHTML = `${catEl.name}`;
-        infosContainer.appendChild(name);
+        infosList.appendChild(name);
         
         let img = document.createElement('img');
         img.setAttribute('src', catEl.image);
-        infosContainer.appendChild(img);
+        infosList.appendChild(img);
 
         let description = document.createElement('li');
         description.innerHTML = `Description : ${catEl.description}`;
-        infosContainer.appendChild(description);
+        infosList.appendChild(description);
     });
 }
 
